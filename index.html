@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-primary text-white text-center p-3 mb-4">
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="city" placeholder="Enter City Name" required>
+                </div>
+                <button class="btn btn-primary mb-3" id="searchButton">Search</button>
+
+                <!-- Buttons for predefined cities -->
+                <button class="btn btn-light w-100 mb-2" id="city1">Atlanta</button>
+                <button class="btn btn-light w-100 mb-2" id="city2">Denver</button>
+                <button class="btn btn-light w-100 mb-2" id="city3">Seattle</button>
+                <button class="btn btn-light w-100 mb-2" id="city4">San Francisco</button>
+                <button class="btn btn-light w-100 mb-2" id="city5">Orlando</button>
+                <button class="btn btn-light w-100 mb-2" id="city6">New York</button>
+                <button class="btn btn-light w-100 mb-2" id="city7">Chicago</button>
+                <button class="btn btn-light w-100 mb-2" id="city8">Austin</button>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="card mb-3" id="currentWeather">
+                    <!-- Current weather will be displayed here -->
+                </div>
+                <div class="card" id="futureWeather">
+                    <!-- Future weather will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <!-- Link to your JavaScript file here -->
+</body>
+</html>
