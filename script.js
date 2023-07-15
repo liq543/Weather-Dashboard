@@ -1,38 +1,47 @@
 var APIKey = 'fcafd102401c66de2b3db010da96e87c';
 
 function getWeather(city) {
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APIKey}`)
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('currentWeather').innerHTML = `
-        <h2>${data.name} (${new Date().toLocaleDateString()})</h2>
-        <p>Temperature: ${data.main.temp} °F</p>
-        <p>Wind Speed: ${data.wind.speed} MPH</p>
-        <p>Humidity: ${data.main.humidity} %</p>
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APIKey}`)
+      .then(response => response.json())
+      .then(data => {
+          document.getElementById('currentWeather').innerHTML = `
+          <div class="card bg-primary text-white m-2" style="width: 18rem;">
+              <div class="card-body">
+                  <h5 class="card-title">${data.name} (${new Date().toLocaleDateString()})</h5>
+                  <p class="card-text">Temperature: ${data.main.temp} F</p>
+                  <p class="card-text">Wind Speed: ${data.wind.speed} MPH</p>
+                  <p class="card-text">Humidity: ${data.main.humidity} %</p>
+              </div>
+          </div>
       `;
-
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKey}`)
+      })
+      .then(() => {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKey}`)
         .then(response => response.json())
         .then(data => {
-          var futureWeatherDiv = document.getElementById('futureWeather');
-          futureWeatherDiv.innerHTML = '<h2>5-Day Forecast:</h2>';
-          for (let i = 0; i < data.list.length; i += 8) {
-            futureWeatherDiv.innerHTML += `
-              <div>
-                <h3>${new Date(data.list[i].dt_txt).toLocaleDateString()}</h3>
-                <p>Temperature: ${data.list[i].main.temp} °F</p>
-                <p>Wind Speed: ${data.list[i].wind.speed} MPH</p>
-                <p>Humidity: ${data.list[i].main.humidity} %</p>
-              </div>
-            `;
-          }
+            var futureWeatherDiv = document.getElementById('futureWeather');
+            futureWeatherDiv.innerHTML = '';
+            for (let i = 0; i < data.list.length; i += 8) {
+                futureWeatherDiv.innerHTML += `
+                  <div class="card bg-primary text-white m-2" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">${new Date(data.list[i].dt_txt).toLocaleDateString()}</h5>
+                      <p class="card-text">Temperature: ${data.list[i].main.temp} °F</p>
+                      <p class="card-text">Wind Speed: ${data.list[i].wind.speed} MPH</p>
+                      <p class="card-text">Humidity: ${data.list[i].main.humidity} %</p>
+                    </div>
+                  </div>
+                `;
+            }
         });
-    });
-}
+      });
+  }
+  
 
 function handleCityButtonClick(event) {
   getWeather(event.target.textContent);
 }
+
 
 var cityButtons = document.getElementsByClassName('cityButton');
 for (var i = 0; i < cityButtons.length; i++) {
