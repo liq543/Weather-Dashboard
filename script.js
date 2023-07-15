@@ -26,7 +26,7 @@ function getWeather(city) {
                   <div class="card bg-primary text-white m-2" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">${new Date(data.list[i].dt_txt).toLocaleDateString()}</h5>
-                      <p class="card-text">Temperature: ${data.list[i].main.temp} °F</p>
+                      <p class="card-text">Temperature: ${data.list[i].main.temp} F</p>
                       <p class="card-text">Wind Speed: ${data.list[i].wind.speed} MPH</p>
                       <p class="card-text">Humidity: ${data.list[i].main.humidity} %</p>
                     </div>
@@ -55,3 +55,4 @@ document.getElementById('searchButton').addEventListener('click', function(event
     getWeather(city);
   }
 });
+getWeather('Atlanta');
