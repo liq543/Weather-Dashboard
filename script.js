@@ -1,4 +1,4 @@
-var APIKey = 'fcafd102401c66de2b3db010da96e87c';
+var APIKey = '9d2557e2d99b2aa1f1c3bf11655c32e6';
 
 function getWeather(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APIKey}`)
